@@ -1,0 +1,191 @@
+ <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!--<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">-->
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+    <title>VestiAI - Cam</title>
+     <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+<!-- Include Lodash from CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+<!-- Place the OpenCV.js script tag here -->
+
+<!-- Then place the script tag for camera.js -->
+
+	    <style>#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-wrap {
+  padding-bottom: 2.5rem;    /* Footer height */
+}
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;            /* Footer height */
+}</style>
+</head>
+  <!--  <head>
+    	{% if title %}
+        <title>Clothes - {{ title }}</title>
+    {% else %}
+        <title>Outfit picker</title>
+    {% endif %}
+</head> -->
+<div id="page-container">
+   <div id="content-wrap">
+<header class="site-header" style="margin:0;padding:0;margin-top: 0px;">
+<div class="pos-f-t">
+  <div class="collapse" id="navbarToggleExternalContent">
+    <div class="bg-dark p-4">
+      <h4 class="text-white">Find your outfit</h4>
+      <span class="text-muted">Let our machine learning algorithm pick an outfit for your mood. Just point the camera at your closet!</span>
+          <li class="nav-item">
+          <a class="nav-link" href="{{url_for('main.about')}}">Posts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('posts.new_post')}}">Create Post</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('users.account')}}">Account</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="{{url_for('users.logout')}}" tabindex="-1" aria-disabled="true">Logout</a>
+          </li>
+    </div>
+  </div>
+  <nav class="navbar navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+</div>
+
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8  offset-lg-2">
+
+			
+            <h2 class="mt-5">Thank you for submitting your survey! Our AI Model has processed your responses, and we are ready to pick out an outfit!:</h2>
+			<!--<input type="submit" value="Stop/Start" name="stop" />-->
+		<!--	<input type="submit" value="Capture" name="click"/>-->
+			<!--<input type="submit" value="Grey" name="grey" />
+			<input type="submit" value="Detect" name="neg" />-->
+      <a href="{{url_for('posts.new_post')}}" class="btn btn-lg btn-outline-warning btn-sm">Click when finished</a>
+			<!--<input type="submit" value="Face Only" name="face" />-->
+			<!--<input type="submit" value="Start/Stop Recording" name="rec" />-->
+			<!--</form>-->
+          <video id="videoElement" width="640" height="480" autoplay playsinline></video>
+          <canvas id="canvasElement" width="640" height="480"></canvas>
+          <!DOCTYPE html>
+          <script async src="https://docs.opencv.org/master/opencv.js" onload="onOpenCvLoaded();" type="text/javascript"></script>
+          <!--<script src="/static/javascript/camera.js"></script>-->
+
+
+			<h3 style="font-family:courier;">Instructions:</h3>
+			<ol style="font-family:courier;">
+			<!--<li>Stop/Start--Toggle between stop or start live streaming. Turn this on and point your camera at your closet or open drawers.</li>
+			<li>Detector--Once your camera is positioned, turn this on for the AI Model to guide you to the correct outfit.</li>-->
+      <li>Point your camera at a closer or open drawer for our AI model to indicate the proper outfit.</li>
+			<!--<li>Capture--Take still-shots if you want to save any images under your account.</li>-->
+		<!--	<li>Face Only--Don't need for now</li> 
+			<li>Start/Stop Recording--Get recording, text on screen?</li> </ol>	-->
+			
+        </div>
+    </div>
+</div>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
+  <!-- Footer -->
+    </div>
+     </div>
+     <!--
+  <footer
+          class="text-center text-lg-start text-white"
+          style="background-color: #3e4551; position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 7rem;  "
+          >
+    < Grid container >
+
+      <hr class="mb-2 " style="height:0px;"/>
+
+      < Section: Social media >
+      <section class="mb-4 text-center">
+        <div>
+      © 2023 Copyright:
+      <a href="#" style="color: #ffc107;">Will Kaminski</a>
+    </div>
+        < Github >
+        <a
+           class="btn btn-outline-light btn-floating m-1"
+           href="https://github.com/WillK13"
+           target="_blank"
+           role="button"
+           ><i class="fab fa-github"></i
+          ></a>
+
+        < Youtube >
+        <a
+           class="btn btn-outline-light btn-floating m-1"
+           href="https://www.youtube.com/@stackunderflow_"
+           target="_blank"
+           role="button"
+           ><i class="fab fa-youtube"></i
+          ></a>
+           < Linkedin >
+        <a
+           class="btn btn-outline-light btn-floating m-1"
+           href="https://www.linkedin.com/in/will-kaminski-ba9b52262/"
+           target="_blank"
+           role="button"
+           ><i class="fab fa-linkedin-in"></i
+          ></a>
+        < Twitter >
+        <a
+           class="btn btn-outline-light btn-floating m-1"
+           href="https://twitter.com/NLPSABOT"
+           target="_blank"
+           role="button"
+           ><i class="fab fa-twitter"></i
+          ></a>
+        < Instagram >
+        <a
+           class="btn btn-outline-light btn-floating m-1"
+           href="https://www.instagram.com/willswim/?hl=en"
+           target="_blank"
+           role="button"
+           ><i class="fab fa-instagram"></i
+          ></a>
+      </section>
+  </footer>
+  </div>
+   </div>
+ -->
+  <!-- Footer -->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>

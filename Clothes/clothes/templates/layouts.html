@@ -1,0 +1,214 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <!--<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">-->
+  <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+  <link href='https://fonts.googleapis.com/css?family=Oxanium' rel='stylesheet'>
+  <link href="https://fonts.cdnfonts.com/css/warownia" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/lt-binary-neue" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/b612-mono" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/ibm-plex-mono" rel="stylesheet">
+                
+  {% if title %}
+  <title>VestiAI - {{ title }}</title>
+  {% else %}
+  <title>Layouts</title>
+  {% endif %}
+</head>
+<style>
+  html, body { height: 100%;}
+
+  body > footer {
+    position: sticky;
+    top: 100vh;
+
+  }
+  footer{
+    background-color: #3e4551;
+  }
+#a1:hover{
+color: #ffc107;
+}
+#a2:hover{
+color: #ffc107;
+}
+#a3:hover{
+color: #ffc107;
+}
+#a4:hover{
+color: #ffc107;
+}
+#a5:hover{
+color: #ffc107;
+}
+#a6:hover{
+color: #ffc107;
+}
+/*
+#page-container {
+    position: relative;
+    min-height: 100vh;
+  }
+
+  #content-wrap {
+    padding-bottom: 2.5rem;   
+  }
+
+  #footer {
+    position: absolute;
+    bottom: -10;
+    width: 100%;
+    height: 7rem;
+    background-color: #3e4551;
+    box-shadow: 0 50vh 0 50vh #3e4551;            
+  }/*
+</style>
+<body>
+
+    <header class="site-header">
+      <div class="hide">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark" id="nav">
+          <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link active" aria-current="page" href="{{url_for('main.extra')}}">Home</a>
+              </li>
+              {% if current_user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link" href="{{url_for('main.about')}}" id="a6">Posts</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{url_for('main.questions')}}" id="a5">Get Outfit</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{url_for('posts.new_post')}}" id="a4">Create Post</a>
+              </li>
+              {% endif %}
+            </ul>
+          </div>
+
+          {% if current_user.is_authenticated %}
+          <div class="mx-auto my-2 order-0 order-md-1 position-relative">
+            <a class="mx-auto" href="{{url_for('main.about')}}">
+              <img src="https://lh3.googleusercontent.com/pw/AJFCJaV8HrW4Us0XbSDQEkOBLQ3LihbGryWpbwE_IAtvoad455sdq6bFnV9ODIRRfWXpndSWFP9SBCAI-GyQbS5QWkjpket-TwM2eYiE1q6s5ZvG810ZN8R2oRCGwDdvByrhtv4pPAZMDcG5FkKJC25Yi34X=w720-h720-s-no?authuser=0" class="rounded-circle border border-warning" height = 60px width=60px>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </div>
+          {% else %}
+          <div class="mx-auto my-2 order-0 order-md-1 position-relative">
+            <a class="mx-auto" href="{{url_for('main.extra')}}">
+              <img src="https://lh3.googleusercontent.com/pw/AJFCJaV8HrW4Us0XbSDQEkOBLQ3LihbGryWpbwE_IAtvoad455sdq6bFnV9ODIRRfWXpndSWFP9SBCAI-GyQbS5QWkjpket-TwM2eYiE1q6s5ZvG810ZN8R2oRCGwDdvByrhtv4pPAZMDcG5FkKJC25Yi34X=w720-h720-s-no?authuser=0" class="rounded-circle border border-warning" height = 60px width=60px>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </div>
+          {% endif %}
+
+          <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <ul class="navbar-nav ml-auto">
+              <form method="POST" action="{{url_for('posts.search')}}" class="form-inline">
+                {{ form1.hidden_tag() }}
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="searched">
+                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+              </form>
+              {% if current_user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link" href="{{url_for('users.account')}}" id="a1">Account</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" href="{{url_for('users.logout')}}" tabindex="-1" aria-disabled="true">Logout</a>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                <a class="nav-link disabled" href="{{url_for('users.register')}}" tabindex="-1" aria-disabled="true" id="a2">Register</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" href="{{url_for('users.login')}}" tabindex="-1" aria-disabled="true" id="a3">Login</a>
+              </li>
+              {% endif %}
+            </ul>
+          </div>
+        </nav>
+      </header>
+
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    <div class="alert alert-{{ category }}">
+     {{message}}
+   </div>
+   {% endfor %}
+   {% endif %}
+   {% endwith %}
+   {% block content %}{% endblock %}
+ </body>
+ <!-- Footer -->
+ <div style="clear: both"></div>
+ <footer id="footer" class="text-center text-lg-start text-white">
+   <!-- Grid container -->
+
+   <hr class="mb-2 " style="height:0px;"/>
+
+   <!-- Section: Social media -->
+   <section class="mb-4 text-center">
+    <div>
+      © 2023 Copyright:
+      <a href="#" style="color: #ffc107;">Will Kaminski</a>
+    </div>
+    <!-- Github -->
+    <a
+    class="btn btn-outline-light btn-floating m-1"
+    href="https://github.com/WillK13"
+    target="_blank"
+    role="button"><i class="fab fa-github"></i></a>
+
+    <!-- Youtube -->
+    <a
+    class="btn btn-outline-light btn-floating m-1"
+    href="https://www.youtube.com/@stackunderflow_"
+    target="_blank"
+    role="button"><i class="fab fa-youtube"></i></a>
+    <!-- Linkedin -->
+    <a
+    class="btn btn-outline-light btn-floating m-1"
+    href="https://www.linkedin.com/in/will-kaminski-ba9b52262/"
+    target="_blank"
+    role="button"
+    ><i class="fab fa-linkedin-in"></i></a>
+    <!-- Twitter -->
+    <a
+    class="btn btn-outline-light btn-floating m-1"
+    href="https://twitter.com/NLPSABOT"
+    target="_blank"
+    role="button"><i class="fab fa-twitter"></i></a>
+    <!-- Instagram -->
+    <a
+    class="btn btn-outline-light btn-floating m-1"
+    href="https://www.instagram.com/willswim/?hl=en"
+    target="_blank"
+    role="button"><i class="fab fa-instagram"></i></a>
+  </section>
+</footer>
+<!-- Footer -->
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</html>

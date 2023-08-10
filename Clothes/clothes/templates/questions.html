@@ -1,0 +1,91 @@
+{% extends "layouts.html" %}
+{% block content %}
+   <div class = "content-section w-75" style="margin-top:10px;margin-left:10px; padding-left:50px;">
+      <form method="POST" action ="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+          <legend class="border-bottom mb-4">{{ legend }}</legend>
+          <h1 style="font-family: 'Oxanium';">VestiAI's Outfit Picker</h1>
+          <br>
+          <h3 style="font-family: 'LT Binary Neue', sans-serif; font-size:5;">Welcome to VestiAI's novel outfit picker!</h3>
+          
+          <h3 style="font-family: 'LT Binary Neue', sans-serif; font-size:5; float: left">Please answer the questions below so our AI can calculate an optimal outfit for <span style="color: #ffc107; font-family: 'LT Binary Neue', sans-serif;  font-size:5;"> you</h3>
+          <br>
+          <br>
+          <hr />
+<br>
+<h4 style="font-size:20px; font-family: 'B612 Mono', sans-serif; color:#375692;">Formality:</h4>
+          <div class = "form-group w-25">
+            {{ form.formality.label(class="form-control-label") }}
+            {% if form.formality.errors %}
+            {{ form.formality(class="form-control form-control-lg is-invalid") }}
+            <div class="invalid-feedback">
+              {% for error in form.formality.errors %}
+              <span>{{ error }}</span>
+              {% endfor %}
+            </div>
+            {% else %}
+              {{ form.formality(class="form-control form-control-lg") }}
+            {% endif %}
+          </div>
+<h4 style="font-size:20px; font-family: 'B612 Mono', sans-serif; color:#375692;">Mood:</h4>
+
+          <div class = "form-group w-25">
+            {{ form.mood.label(class="form-control-label") }}
+            {% if form.mood.errors %}
+            {{ form.mood(class="form-control form-control-lg is-invalid") }}
+            <div class="invalid-feedback">
+              {% for error in form.mood.errors %}
+              <span>{{ error }}</span>
+              {% endfor %}
+            </div>
+            {% else %}
+              {{ form.mood(class="form-control form-control-lg") }}
+            {% endif %}
+          </div>
+
+<h4 style="font-size:20px; font-family: 'B612 Mono', sans-serif; color:#375692;">Temperature:</h4>
+
+
+          <div class = "form-group w-25">
+            {{ form.temperature.label(class="form-control-label") }}
+            {% if form.temperature.errors %}
+            {{ form.temperature(class="form-control form-control-lg is-invalid") }}
+            <div class="invalid-feedback">
+              {% for error in form.temperature.errors %}
+              <span>{{ error }}</span>
+              {% endfor %}
+            </div>
+            {% else %}
+              {{ form.temperature(class="form-control form-control-lg") }}
+              {% for subfield in form.radio %}
+    <tr>
+        <!--<td>{{ subfield }}</td>-->
+        <td>{{ subfield.label }}</td>
+    </tr>
+{% endfor %}
+            {% endif %}
+          </div>
+<h4 style="font-size:20px; font-family: 'B612 Mono', sans-serif; color:#375692;">Additional Comments:</h4>
+
+      <div class = "form-group w-50">
+            {{ form.additional.label(class="form-control-label") }}
+            {% if form.additional.errors %}
+            {{ form.additional(class="form-control form-control-lg is-invalid") }}
+            <div class="invalid-feedback">
+              {% for error in form.additional.errors %}
+              <span>{{ error }}</span>
+              {% endfor %}
+            </div>
+            {% else %}
+              {{ form.additional(class="form-control form-control-lg") }}
+            {% endif %}
+          </div>
+
+        </fieldset>
+        <div class="form-group">
+          {{ form.submit(class="btn btn-outline-warning") }}
+        </div>
+      </form>
+    </div>
+{% endblock content %}

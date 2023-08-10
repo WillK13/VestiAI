@@ -1,0 +1,122 @@
+<head>
+	<link href="https://fonts.cdnfonts.com/css/share-tech-mono" rel="stylesheet">
+</head>
+<svg width="200" height="200" viewBox="0 0 100 100">
+  <polyline class="line-cornered stroke-still" points="0,0 100,0 100,100" stroke-width="10" fill="none"></polyline>
+  <polyline class="line-cornered stroke-still" points="0,0 0,100 100,100" stroke-width="10" fill="none"></polyline>
+  <polyline class="line-cornered stroke-animation" points="0,0 100,0 100,100" stroke-width="10" fill="none"></polyline>
+  <polyline class="line-cornered stroke-animation" points="0,0 0,100 100,100" stroke-width="10" fill="none"></polyline>
+</svg>
+	<!--<img src="https://lh3.googleusercontent.com/pw/AJFCJaV8HrW4Us0XbSDQEkOBLQ3LihbGryWpbwE_IAtvoad455sdq6bFnV9ODIRRfWXpndSWFP9SBCAI-GyQbS5QWkjpket-TwM2eYiE1q6s5ZvG810ZN8R2oRCGwDdvByrhtv4pPAZMDcG5FkKJC25Yi34X=w720-h720-s-no?authuser=0" class="rounded-circle border border-warning" height = 200px width=200px>-->
+<style>
+
+	body {
+  background: #282828;
+  background-image: url(https://lh3.googleusercontent.com/pw/AJFCJaV8HrW4Us0XbSDQEkOBLQ3LihbGryWpbwE_IAtvoad455sdq6bFnV9ODIRRfWXpndSWFP9SBCAI-GyQbS5QWkjpket-TwM2eYiE1q6s5ZvG810ZN8R2oRCGwDdvByrhtv4pPAZMDcG5FkKJC25Yi34X=w720-h720-s-no?authuser=0); 
+  	background-repeat:no-repeat; 
+  	background-size:200px; 
+  	background-position-y: 50%;
+	background-position-x: 50%;
+}
+
+svg {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%) rotate(45deg) scale(1);
+          transform: translate(-50%, -50%) rotate(45deg) scale(1);
+}
+
+.stroke-still {
+  stroke: #232323;
+}
+
+.stroke-animation {
+  -webkit-animation: stroke-spacing 1.2s ease-in, stroke-color 4.8s linear;
+          animation: stroke-spacing 1.2s ease-in, stroke-color 4.8s linear;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-delay: 0;
+          animation-delay: 0;
+  -webkit-animation-direction: normal;
+          animation-direction: normal;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+}
+
+@-webkit-keyframes stroke-spacing {
+  0% {
+    stroke-dasharray: 0 200;
+  }
+  45% {
+    stroke-dashoffset: 0;
+    stroke-dasharray: 200 200;
+  }
+  90% {
+    stroke-dashoffset: -200;
+    stroke-dasharray: 200 200;
+  }
+  100% {
+    stroke-dashoffset: -200;
+    stroke-dasharray: 200 200;
+  }
+}
+
+@keyframes stroke-spacing {
+  0% {
+    stroke-dasharray: 0 200;
+  }
+  45% {
+    stroke-dashoffset: 0;
+    stroke-dasharray: 200 200;
+  }
+  90% {
+    stroke-dashoffset: -200;
+    stroke-dasharray: 200 200;
+  }
+  100% {
+    stroke-dashoffset: -200;
+    stroke-dasharray: 200 200;
+  }
+}
+
+@-webkit-keyframes stroke-color {
+  0%  { stroke: #375692; }
+  24% { stroke: #fbc000; }
+  25% { stroke: #327864; }
+  49% { stroke: #327864; } 
+  50% { stroke: #375692; }
+  74% { stroke: #375692; }
+  75% { stroke: #fbc000; }
+  99% { stroke: #fbc000; }
+}
+@keyframes stroke-color {
+  0%  { stroke: #375692; }
+  24% { stroke: #fbc000; }
+  25% { stroke: #327864; }
+  49% { stroke: #327864; }
+  50% { stroke: #375692; }
+  74% { stroke: #375692; }
+  75% { stroke: #fbc000; }
+  99% { stroke: #fbc000; }
+}
+
+
+
+</style>
+<script>    
+     window.setTimeout(function(){
+
+       // Move to a new location or you can do something else
+       window.location.href = "http://127.0.0.1:5000/cams";
+
+       }, Math.random()*10000);
+
+ </script>
+ <div style="text-align:center; padding-top:34%;">
+ <h1 style="font-family: 'Share Tech Mono', sans-serif;
+    color: #FAF9F6;">Our AI model is analyzing your results...</h1></div>

@@ -1,0 +1,45 @@
+{% extends "layouts.html" %}
+{% block content %}
+   <div class = "content-section w-75" style="margin-top:10px;margin-left:10px;">
+      <form method="POST" action ="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+          <legend class="border-bottom mb-4">{{ legend }}</legend>
+          <br>
+          <h5 style="font-family: 'IBM Plex Mono', sans-serif;">Write about how our AI did and share it with our community!</h5>
+          <hr />
+          <br>
+          <div class = "form-group w-25">
+            {{ form.title.label(class="form-control-label") }}
+            {% if form.title.errors %}
+            {{ form.title(class="form-control form-control-lg is-invalid") }}
+            <div class="invalid-feedback">
+              {% for error in form.title.errors %}
+              <span>{{ error }}</span>
+              {% endfor %}
+            </div>
+            {% else %}
+              {{ form.title(class="form-control form-control-lg") }}
+            {% endif %}
+          </div>
+
+          <div class = "form-group w-50">
+            {{ form.content.label(class="form-control-label") }}
+            {% if form.content.errors %}
+            {{ form.content(class="form-control form-control-lg is-invalid") }}
+            <div class="invalid-feedback">
+              {% for error in form.content.errors %}
+              <span>{{ error }}</span>
+              {% endfor %}
+            </div>
+            {% else %}
+              {{ form.content(class="form-control form-control-lg") }}
+            {% endif %}
+          </div>
+        </fieldset>
+        <div class="form-group">
+          {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+      </form>
+    </div>
+{% endblock content %}
