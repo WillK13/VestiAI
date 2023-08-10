@@ -60,4 +60,5 @@ cv.onRuntimeInitialized = () => {
         // Start the processing loop
         setTimeout(() => requestAnimationFrame(processVideo), 1000 / FPS);
     }
+    //Code for detection based on survey...
 };
